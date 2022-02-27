@@ -22,7 +22,7 @@ def foo(message):
     try:
         bot.reply_to(message, "Продовжи в Reply "+random.choice(list(questions.keys())))
     except:
-        print('fail')
+        print('failure')
 
 
 
