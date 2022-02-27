@@ -26,5 +26,5 @@ def foo(message):
     print('+')
     bot.reply_to(message, "Продовжи в Reply "+random.choice(list(questions.keys())))
 
-
+bot.remove_webhook()
 bot.polling(none_stop=True)
