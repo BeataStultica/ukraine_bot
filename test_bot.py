@@ -1,6 +1,13 @@
 import telebot
 import random
+from flask import Flask, request
+import logging
+
 bot = telebot.TeleBot('1592401896:AAFMU7f-u1LSHeJocnJknQfVsVCiSi2RVTs')
+logger = telebot.logger
+telebot.logger.setLevel(logging.INFO)
+
+server = Flask(__name__)
 
 @bot.message_handler(content_types=[
     "new_chat_members"
@@ -19,11 +26,13 @@ def foo(message):
                 'Давай виключим світло':'мовчати',
                 'Старі фотографії на стіл':'розклади'
                 }
-    try:
-        bot.reply_to(message, "Продовжи в Reply "+random.choice(list(questions.keys())))
-    except:
-        print('failure')
+
+    bot.reply_to(message, "Продовжи в Reply "+random.choice(list(questions.keys())))
 
 
-
-bot.polling()
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url="https://norussianbot.herokuapp.com/")
+    return "?", 200
+server.run(host="0.0.0.0", port=os.environ.get('PORT', 80))
