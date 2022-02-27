@@ -23,7 +23,7 @@ def foo(message):
                 'Давай виключим світло':'мовчати',
                 'Старі фотографії на стіл':'розклади'
                 }
-
+    print('+')
     bot.reply_to(message, "Продовжи в Reply "+random.choice(list(questions.keys())))
 
 
