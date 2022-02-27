@@ -27,9 +27,4 @@ def foo(message):
     bot.reply_to(message, "Продовжи в Reply "+random.choice(list(questions.keys())))
 
 
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url="https://norussianbot.herokuapp.com/bot")
-    return "?", 200
-server.run(host="0.0.0.0", port=os.environ.get('PORT', 80))
+bot.polling(none_stop=True)
