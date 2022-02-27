@@ -19,9 +19,10 @@ def foo(message):
                 'Давай виключим світло':'мовчати',
                 'Старі фотографії на стіл':'розклади'
                 }
-
-    bot.reply_to(message, "Продовжи в Reply "+random.choice(list(questions.keys())))
-
+    try:
+        bot.reply_to(message, "Продовжи в Reply "+random.choice(list(questions.keys())))
+    except:
+        print('fail')
 
 
 
