@@ -10,11 +10,7 @@ telebot.logger.setLevel(logging.INFO)
 
 server = Flask(__name__)
 
-@bot.message_handler(content_types=[
-    "new_chat_members"
-])
-
-
+@bot.message_handler(content_types=["new_chat_members"])
 def foo(message):
 
     questions={'Хіба ревуть воли':'ясла',
@@ -34,6 +30,6 @@ def foo(message):
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url="https://norussianbot.herokuapp.com/")
+    bot.set_webhook(url="https://norussianbot.herokuapp.com/bot")
     return "?", 200
 server.run(host="0.0.0.0", port=os.environ.get('PORT', 80))
