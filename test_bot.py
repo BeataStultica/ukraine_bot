@@ -2,6 +2,7 @@ import telebot
 import random
 from flask import Flask, request
 import logging
+import os
 
 bot = telebot.TeleBot('1592401896:AAFMU7f-u1LSHeJocnJknQfVsVCiSi2RVTs')
 logger = telebot.logger
